@@ -1,10 +1,9 @@
 package com.bafoly.ex.user;
 
-import java.util.NoSuchElementException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import com.bafoly.ex.error.ApiError;
+import com.bafoly.ex.error.NotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +24,9 @@ public class UserController {
     return userService.getUserById(id);
   }
 
-  @ExceptionHandler(NoSuchElementException.class)
+  @ExceptionHandler(NotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
-  public ApiError handleNoSuchElementException(NoSuchElementException ex, HttpServletRequest request){
+  public ApiError handleNotFoundException(NotFoundException ex, HttpServletRequest request){
     ApiError error = new ApiError(404, ex.getMessage(), request.getServletPath());
     return error;
   }
