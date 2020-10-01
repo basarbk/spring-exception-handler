@@ -1,9 +1,11 @@
 package com.bafoly.ex.error;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiError {
 
   int status;
@@ -14,7 +16,7 @@ public class ApiError {
 
   String path;
 
-  Map<String, String> validationErrors = new HashMap<>();
+  Map<String, String> validationErrors;
 
   public ApiError(int status, String message, String path) {
     super();
