@@ -14,5 +14,9 @@ public class UserService {
 	public User getUserById(long id) {
     return this.userRepository.findById(id).orElseThrow(() -> new NotFoundException("User does not exist!"));
 	}
+
+	public User save(User user) {
+		return this.userRepository.save(user);
+	}
   
 }
