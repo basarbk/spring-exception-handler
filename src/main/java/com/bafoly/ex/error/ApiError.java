@@ -1,6 +1,8 @@
 package com.bafoly.ex.error;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ApiError {
 
@@ -11,6 +13,8 @@ public class ApiError {
   long timestamp;
 
   String path;
+
+  Map<String, String> validationErrors = new HashMap<>();
 
   public ApiError(int status, String message, String path) {
     super();
@@ -50,6 +54,14 @@ public class ApiError {
 
   public String getPath() {
     return path;
+  }
+
+  public void setValidationErrors(Map<String, String> validationErrors) {
+    this.validationErrors = validationErrors;
+  }
+  
+  public Map<String, String> getValidationErrors() {
+    return validationErrors;
   }
   
 }
